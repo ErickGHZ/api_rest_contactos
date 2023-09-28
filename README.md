@@ -10,6 +10,7 @@ Realizar un ejemplo de diseño de una API REST de tipo CRUD y su posterior codif
 Para este ejemplo se utilizará el gestor de base de datos [SQLite3](https://www.sqlite.org/) con las siguientes tablas:
 
 ### 3.1 Tabla: contactos
+Diseño de tabla para almacenar contactos
 
 |No.|Campo|Tipo|Restricciones|Descripción|
 |--|--|--|--|--|
@@ -21,6 +22,7 @@ Para este ejemplo se utilizará el gestor de base de datos [SQLite3](https://www
 |6|telefono|varchar(13)|Not Null|Telefono del contacto|
 
 ### 3.2 Script
+Script para realizar tabla de contactos en [SQLite3](https://www.sqlite.org/)
 
 CREATE TABLE IF NOT EXISTS contactos (
     id_contacto INTEGER PRIMARY KEY,
@@ -30,6 +32,32 @@ CREATE TABLE IF NOT EXISTS contactos (
     email VARCHAR(100) NOT NULL,
     telefono VARCHAR(13) NOT NULL
 );
+
+## 4. Diseño del Endpoint
+Diseño del end para el recurso contatos
+
+### 4.1 Listar todos los contactos
+Endpoint para obtener todos los contactos
+
+|No.|Propiedad|Detalle|
+|--|--|--|
+|1|Description|--|
+|2|Summary|--|
+|3|Method|--|
+|4|Endpoint|--|
+|5|Query Param|--|
+|6|Path Param|--|
+|7|Data|--|
+|8|Version|--|
+|9|Status Code|--|
+|10|Response type|--|
+|11|Response|--|
+|12|Curl|--|
+|13|Status Code (error)|--|
+|14|Response Type (error)|--|
+|15|Response (error)|--|
+
+
 
 
 
