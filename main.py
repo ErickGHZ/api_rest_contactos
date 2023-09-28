@@ -1,16 +1,13 @@
 from fastapi import FastAPI
 import csv
-import JSON
+import json
 
 app = FastAPI()
 
 
-@app.get("/")
-async def root():
-    return {"Hello": "World"}
 
 @app.get("/v1/contactos")
-async def get_contactos():
+async def root():
 
     # TODO read contactos.csv
     # Crear una lista para almacenar los datos CSV
@@ -28,6 +25,5 @@ async def get_contactos():
 
     # TODO save in response
     response = json.dumps(datos_csv, indent=4)
-
 
     return response
