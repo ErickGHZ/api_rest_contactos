@@ -130,4 +130,29 @@ Endpoint para crear contactos
 |18|Response (error)|{"message":"Parametros vacios"}|
 
 
+### 4.5 Eliminar contactos por id_contacto 
+Endpoint para eliminar los contactos por su id_contacto
+
+|No.|Propiedad|Detalle|
+|--|--|--|
+|1|Description|Endpoint para eliminar los contactos por su id_contacto|
+|2|Summary|Endpoint contactos eliminar id_contacto|
+|3|Method|DELETE|
+|4|Endpoint|http://localhost:8000/contactos|
+|5|Query Params|NA|
+|6|Path Param|/{id_contacto}|
+|7|Data|{"id_contacto":int}|
+|8|Version|v1|
+|9|Status Code|207|
+|10|Response type|application/json|
+|11|Response|{"message":"Contacto elminado"}|
+|12|Curl|curl -X "PUT" "http://localhost:8000/contactos/{id_contacto}" -H "accept:application/json" -d "{"id_contacto": int}"|
+|13|Status Code (error)|432|
+|14|Response Type (error)|application/json|
+|15|Response (error)|{"message":"Contacto no encontrado"}|
+|16|Status Code (error)|434|
+|17|Response Type (error)|application/json|
+|18|Response (error)|{"message":"Parametro vacio"}|
+
+
 
