@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS contactos (
 );
 
 ## 4. Diseño del Endpoint
-Diseño del end para el recurso contactos
+Diseño del endpoint para el recurso contactos
 
 ### 4.1 Mostrar todos los contactos
 Endpoint para obtener todos los contactos
@@ -150,7 +150,7 @@ Endpoint para eliminar los contactos por su id_contacto
 |13|Status Code (error)|432|
 |14|Response Type (error)|application/json|
 |15|Response (error)|{"message":"Contacto no encontrado"}|
-|16|Status Code (error)|434|
+|16|Status Code (error)|433|
 |17|Response Type (error)|application/json|
 |18|Response (error)|{"message":"Parametro vacio"}|
 
