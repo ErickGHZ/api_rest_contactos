@@ -34,28 +34,52 @@ CREATE TABLE IF NOT EXISTS contactos (
 );
 
 ## 4. Diseño del Endpoint
-Diseño del end para el recurso contatos
+Diseño del end para el recurso contactos
 
-### 4.1 Listar todos los contactos
+### 4.1 Mostrar todos los contactos
 Endpoint para obtener todos los contactos
 
 |No.|Propiedad|Detalle|
 |--|--|--|
-|1|Description|--|
-|2|Summary|--|
-|3|Method|--|
-|4|Endpoint|--|
-|5|Query Param|--|
-|6|Path Param|--|
-|7|Data|--|
-|8|Version|--|
-|9|Status Code|--|
-|10|Response type|--|
-|11|Response|--|
-|12|Curl|--|
-|13|Status Code (error)|--|
-|14|Response Type (error)|--|
-|15|Response (error)|--|
+|1|Description|Endpoint para obtener todos los contactos|
+|2|Summary|Enpoint todos los contactos|
+|3|Method|GET|
+|4|Endpoint|http://localhost:8000/contactos|
+|5|Query Param|?limit=10&offset=10|
+|6|Path Param|NA|
+|7|Data|NA|
+|8|Version|v1|
+|9|Status Code|200|
+|10|Response type|application/json|
+|11|Response|[{"id_contacto":int,"nombre":string,"apellido_paterno":string,"apellido_materno":string,"email":string,"telefono":string},{"id_contacto":int,"nombre":string,"apellido_paterno":string,"apellido_materno":string,"email":string,"telefono":string}]|
+|12|Curl|curl -X "GET" "http://localhost:8000/contactos?limit=10&offset=10" -H "accept":"aplication/json"|
+|13|Status Code (error)|NA|
+|14|Response Type (error)|NA|
+|15|Response (error)|NA|
+
+### 4.2 Buscar contactos por nombre 
+Endpoint para obtener todos los contactos por nombre
+
+|No.|Propiedad|Detalle|
+|--|--|--|
+|1|Description|Endpoint para obtener contactos por nombre|
+|2|Summary|Enpoint contactos por nombre|
+|3|Method|GET|
+|4|Endpoint|http://localhost:8000/contactos|
+|5|Query Param|?limit=10&offset=10&nombre={nombre}|
+|6|Path Param|NA|
+|7|Data|NA|
+|8|Version|v1|
+|9|Status Code|202|
+|10|Response type|application/json|
+|11|Response|[{"id_contacto":int,"nombre":string,"apellido_paterno":string,"apellido_materno":string,"email":string,"telefono":string},{"id_contacto":int,"nombre":string,"apellido_paterno":string,"apellido_materno":string,"email":string,"telefono":string}]|
+|12|Curl|curl -X "GET" "http://localhost:8000/contactos?limit=10&offset=10&nombre={nombre}" -H "accept":"aplication/json"|
+|13|Status Code (error)|430|
+|14|Response Type (error)|application/json|
+|15|Response (error)|{"message":"Contacto no encontrado"}|
+|16|Status Code (error)|432|
+|17|Response Type (error)|application/json|
+|18|Response (error)|{"message":"Parametro vacio"}|
 
 
 
