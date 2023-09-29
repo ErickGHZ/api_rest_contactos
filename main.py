@@ -4,11 +4,12 @@ import json
 
 app = FastAPI()
 
-
+@app.get("/")
+def root():
+    return {"message":"Holamundo"}
 
 @app.get("/v1/contactos")
-async def root():
-
+def read_root():
     # TODO read contactos.csv
     # Crear una lista para almacenar los datos CSV
     datos_csv = []
@@ -17,13 +18,11 @@ async def root():
     with open('contactos.csv', 'r', newline='') as archivo_csv:
         lector_csv = csv.DictReader(archivo_csv)
 
-    # TODO JSON encode contactos.csv
-    # Itera sobre las filas del archivo CSV
-    for fila in lector_csv:
-        # Agrega cada fila como un diccionario a la lista
-        datos_csv.append(fila)
+        # TODO JSON encode contactos.csv
+        # Itera sobre las filas del archivo CSV
+        for fila in lector_csv:
+            # Agrega cada fila como un diccionario a la lista
+            datos_csv.append(fila)
 
-    # TODO save in response
-    response = json.dumps(datos_csv, indent=4)
-
-    return response
+    # Devuelve la lista de datos_csv como una respuesta JSON en bruto
+    return datos_csv
