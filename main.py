@@ -1,15 +1,31 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, status
 import csv
 import json
 
 app = FastAPI()
 
-@app.get("/")
+@app.get(
+    "/", 
+    status_code=status.HTTP_200_OK,
+    summary="Endpoint Raiz"
+    )
 def root():
+    """ 
+    # Endpoint raiz
+    ## Status codes
+    * 289 - Codigo de confirmacion
+    * 301 - Codigo de status
+    """
     return {"message":"Holamundo"}
 
 @app.get("/v1/contactos")
 def read_root():
+    """
+    # Endpoint raiz
+    ## Status codes
+    * 289 - Codigo de confirmacion
+    * 301 - Codigo de status
+    """
     # TODO read contactos.csv
     # Crear una lista para almacenar los datos CSV
     datos_csv = []
