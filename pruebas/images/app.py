@@ -1,5 +1,5 @@
 from PIL import Image
-im = Image.open("ski.jpg")
+im = Image.open("yoxd.png")
 
 print(im.format, im.size, im.mode)
 
@@ -7,7 +7,7 @@ box = (0, 0, 500, 500)
 region = im.crop(box)
 region.save("recorte.png")
 
-"""
+
 r, g, b, a = im.split()
 region = Image.merge("RGBA", (b,g,r,a))
 region.save("cambio.png")
@@ -27,8 +27,8 @@ region.save("cambio4.png")
 r, g, b, a = im.split()
 region = Image.merge("RGBA", (g,b,r,a))
 region.save("cambio5.png")
-"""
 
+"""
 out = im.rotate(45)
 out.save("giro.png")
 
@@ -51,3 +51,4 @@ region.save("cambio4.png")
 r, g, b = im.split()
 region = Image.merge("RGB", (g,b,r))
 region.save("cambio5.png")
+"""
