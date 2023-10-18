@@ -1,0 +1,69 @@
+import fastapi
+import sqlite3
+from pydantic import BaseModel
+
+# Crea la base de datos
+conn = sqlite3.connect("contactos.db")
+
+app = fastapi.FastAPI()
+
+class Contacto(BaseModel):
+    email: str
+    nombres: str
+    telefono: str
+
+# Rutas para las operaciones CRUD
+
+@app.post("/contactos")
+async def crear_contacto(contacto: Contacto):
+    """Crea un nuevo contacto."""
+    connection = conn.cursor()
+    connection.execute('INSERT INTO contactos (email, nombres, telefono) VALUES (?, ?, ?)',
+                      (contacto.email, contacto.nombres, contacto.telefono))
+    conn.commit()
+    return contacto
+
+@app.get("/contactos")
+async def obtener_contactos():
+    """Obtiene todos los contactos."""
+    c = conn.cursor()
+    c.execute('SELECT * FROM contactos')
+    rows = c.fetchall()
+    contactos = []
+    for row in rows:
+        contacto = Contacto(email=row[0], nombres=row[1], telefono=row[2])
+        contactos.append(contacto)
+    return contactos
+
+@app.get("/contactos/{email}")
+async def obtener_contacto(email: str):
+    """Obtiene un contacto por su email."""
+    c = conn.cursor()
+    c.execute('SELECT * FROM contactos WHERE email = ?', (email,))
+    row = c.fetchone()
+    if row:
+        contacto = Contacto(email=row[0], nombres=row[1], telefono=row[2])
+        return contacto
+    else:
+        return None
+
+@app.put("/contactos/{email}")
+async def actualizar_contacto(email: str, contacto: Contacto):
+    """Actualiza un contacto."""
+    c = conn.cursor()
+    c.execute('UPDATE contactos SET nombres = ?, telefono = ? WHERE email = ?',
+              (contacto.nombres, contacto.telefono, email))
+    conn.commit()
+    return contacto
+
+@app.delete("/contactos/{email}")
+async def eliminar_contacto(email: str):
+    """Elimina un contacto."""
+    c = conn.cursor()
+    c.execute('DELETE FROM contactos WHERE email = ?', (email,))
+    conn.commit()
+    return {"mensaje": "Contacto eliminado"}
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
